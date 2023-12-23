@@ -11,7 +11,9 @@ Questo è un progetto in fase di sviluppo per una chat realizzata utilizzando Re
 - **Iscrizione e login:** Gli utenti possono registrarsi e accedere all'app utilizzando un'email e una password (implementato)
 - **Messaggistica:** Gli utenti possono inviare messaggi ai loro contatti registrati (implementato)
 - **Invio di immagini:** È possibile inviare immagini tramite la chat (implementato)
-- **Notifiche:** Ricevi notifiche quando ricevi nuovi messaggi (in corso di implementazione)
+- **Anteprima immagini:** Cliccando su una immagine presente nella chat, si apre un modale contenente l'anteprima della stessa (da implementare)
+- **Modifica ed eliminazione dei messaggi inviati:** È possibile modificare ed eliminare i messaggi inviati (da implementare)
+- **Notifiche:** Ricevi notifiche quando ricevi nuovi messaggi (da implementare)
 
 ## Requisiti
 
