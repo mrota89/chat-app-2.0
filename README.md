@@ -2,11 +2,18 @@
 
 Questo è un progetto in fase di sviluppo per una chat realizzata utilizzando React e le API di Firebase come backend. L'obiettivo principale di questo progetto è acquisire familiarità con React e Firebase attraverso la creazione di un'app di messaggistica semplice.
 
+## Nota Importante
+
+⚠️ **Importante:** Questa repository è stata recentemente ricreata da zero. Tutte le commit precedenti sono state eliminate. Le informazioni riportate di seguito si applicano alla versione attuale del progetto.
+
 ## Funzionalità principali
 
 - **Iscrizione e login:** Gli utenti possono registrarsi e accedere all'app utilizzando un'email e una password (implementato)
 - **Messaggistica:** Gli utenti possono inviare messaggi ai loro contatti registrati (implementato)
-- **Invio di immagini:** È possibile inviare immagini tramite la chat (in corso di implementazione)
+- **Invio di immagini:** È possibile inviare immagini tramite la chat (implementato)
+- **Anteprima immagini:** Cliccando su una immagine presente nella chat, si apre un modale contenente l'anteprima della stessa (da implementare)
+- **Modifica ed eliminazione dei messaggi inviati:** È possibile modificare ed eliminare i messaggi inviati (da implementare)
+- **Contatti social:** Gli utenti possono condividere il proprio account GitHub e LinkedIn (da implementare)
 - **Notifiche:** Ricevi notifiche quando ricevi nuovi messaggi (da implementare)
 
 ## Requisiti
