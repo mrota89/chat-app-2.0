@@ -26,11 +26,28 @@ const Input = () => {
     text.length === 0 && !image
   ), [image, text.length])
 
+  const attachedImageCaption = useMemo(() => (
+    text ? `${image?.name}\\n${text}` : image?.name
+  ), [image, text])
+
+  const chatTextPreview = useMemo(() => {
+    if (text && !image) {
+      return text;
+    }
+    if (text && image) {
+      return text;
+    }
+    if (!text && image) {
+      return image.name;
+    }
+  }, [image, text])
+
   const handleImageChange = useCallback((event) => {
     setImage(
-      (event.target.files[0].type.includes("image")
-        && event.target.files)
-        ? event.target.files[0]
+      (
+        event.target.files
+        && event.target.files[0].type.includes("image")
+      ) ? event.target.files[0]
         : null
     );
     if (!image) {
@@ -56,13 +73,13 @@ const Input = () => {
           await updateDoc(doc(db, "chats", data.chatId), {
             messages: arrayUnion({
               id: uuid(),
-              text,
+              text: attachedImageCaption,
               senderId: currentUser.uid,
               date: Timestamp.now(),
               image: downloadURL,
             })
           })
-          setImage(false)
+          setImage(null)
         }
       );
     } else {
@@ -82,12 +99,12 @@ const Input = () => {
     per il ricevente.
     */
     await updateDoc(doc(db, "userChats", currentUser.uid), {
-      [`chats.${data.chatId}.lastMessage`]: { text },
+      [`chats.${data.chatId}.lastMessage`]: { text: chatTextPreview },
       [`chats.${data.chatId}.date`]: serverTimestamp(),
     })
 
     await updateDoc(doc(db, "userChats", data.user.uid), {
-      [`chats.${data.chatId}.lastMessage`]: { text },
+      [`chats.${data.chatId}.lastMessage`]: { text: chatTextPreview },
       [`chats.${data.chatId}.date`]: serverTimestamp(),
     })
 
@@ -96,14 +113,24 @@ const Input = () => {
     inputImageRef.current.value = null;
   }, [
     currentUser.uid, data.chatId, data.user.uid, image,
-    setErrorCode, setErrorMessage, setShowErrorModal, text
+    setErrorCode, setErrorMessage, setShowErrorModal, text,
+    attachedImageCaption, chatTextPreview
   ])
+
+  const onDeleteAttachedImage = useCallback(() => {
+    setImage(null)
+    inputImageRef.current.value = null;
+  }, [])
 
   return (
     <div className='input-message'>
       {image && (
         <div className='image-file-name'>
-          {inputImageRef.current.files[0].name}
+          <div className="delete-image-button" onClick={onDeleteAttachedImage}>
+            <div className='close' />
+            <div className='close' />
+          </div>
+          {image.name}
         </div>
       )}
       <input

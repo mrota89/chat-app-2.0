@@ -15,6 +15,33 @@
     background-color: #fff;
     right: 0;
     width: fit-content;
+    padding: 5px 10px;
+    border-radius: 5px 5px 0 0;
+    border: solid 1px #ccccccb3;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .delete-image-button {
+      width: 15px;
+      height: 15px;
+      position: relative;
+      cursor: pointer;
+
+      .close {
+        width: 3px;
+        height: 15px;
+        background-color: #000;
+        rotate: 135deg;
+        position: absolute;
+        right: 5.5px;
+        border-radius: 5px;
+      }
+
+      .close:nth-child(2) {
+        rotate: -135deg;
+      }
+    }
   }
 
   input {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, useCallback } from 'react';
 import { AuthContext } from '../../context';
 import { ActiveChatContext } from '../../context';
 import { FaUser } from 'react-icons/fa';
@@ -25,6 +25,13 @@ const Message = ({ dataMsg }) => {
     dataMsg?.senderId === currentUser.uid ? 'owner' : null,
   ].join(' '), [currentUser.uid, dataMsg?.senderId])
 
+  const messageTextRows = useCallback((string) => {
+    if (string.includes('\\n')) {
+      return string.split('\\n');
+    }
+    return [string];
+  }, [])
+
   return (
     <div className={message} ref={ref}>
       {(dataMsg?.image || dataMsg?.text) && (
@@ -40,12 +47,18 @@ const Message = ({ dataMsg }) => {
         {dataMsg?.image && (
           <img src={dataMsg.image} alt="sended" />
         )}
-        {dataMsg?.text && (
-          <p>{dataMsg?.text}</p>
-        )}
+        {dataMsg?.text
+          && messageTextRows(dataMsg.text).length > 0
+          && messageTextRows(dataMsg.text).map((line, index) => (
+            <p key={index}>
+              {line}
+              <br />
+            </p>
+          ))}
       </div>
-    </div >
-  )
+    </div>
+  );
+
 }
 
 export default Message;
