@@ -1,0 +1,126 @@
+@import 'src/style/partials';
+
+.contact-list-wrapper {
+  background-color: inherit;
+  transition: top 500ms;
+  width: 100%;
+  height: calc(100% - 100px);
+  position: absolute;
+  top: 100px;
+
+  &.open {
+    top: 250px;
+    height: calc(100% - 250px);
+  }
+
+  .search {
+    background-color: $darkElectricBlue;
+
+    input {
+      background-color: transparent;
+      border: none;
+      color: $cultured;
+      width: 100%;
+      outline: none;
+      height: 60px;
+      padding-left: 8px;
+      transition: background-color 500ms;
+
+      &::placeholder {
+        color: #ddd;
+      }
+
+      &:focus {
+        background-color: $blackCoral;
+      }
+    }
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 156px;
+
+    .contact {
+      background-color: $darkElectricBlue;
+      padding: 11px 15px;
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      color: #ddd;
+      cursor: pointer;
+      transition: background-color 500ms;
+
+      &:hover {
+        background-color: $blackCoral;
+      }
+
+
+      img,
+      .user-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .contact-info {
+
+        span {
+          font-size: 12px;
+          font-weight: bolder;
+        }
+
+        p {
+          font-size: 8px;
+          color: $secondaryTextColor;
+        }
+      }
+    }
+  }
+}
+
+/*media queries*/
+
+@include smToMd {
+  .contact-list-wrapper {
+    top: 30px;
+    height: calc(100% - 30px);
+
+    .search {
+      display: none;
+    }
+
+    .contact-list {
+      .contact {
+        gap: 5px;
+        align-items: center;
+        padding: 10px 5px;
+        justify-content: space-evenly;
+
+        img,
+        .user-icon {
+          width: 30px;
+          height: 30px;
+        }
+
+        .contact-info {
+          span {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include sm {
+  .contact-list-wrapper {
+    .contact-list {
+      .contact {
+        padding-left: 20px;
+      }
+    }
+  }
+}

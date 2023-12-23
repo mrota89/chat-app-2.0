@@ -1,0 +1,191 @@
+@import '../components/activeChat/activeChat';
+@import '../components/contactList/contactList';
+@import '../components/chats/chats';
+@import '../components/loader/loader';
+@import '../components/input/input';
+@import '../components/formInput/formInput';
+@import '../components/message/message';
+@import '../components/messages/messages';
+@import '../components/mobileNavbar/mobileNavbar';
+@import '../components/modalError/modalError';
+@import '../components/navbar/navbar';
+@import '../components/sidebar/sidebar';
+@import '../components/socialForm/socialForm';
+@import '../components/userProfile/userProfile';
+
+/* styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.form-container {
+  background-color: $beauBlue;
+  height: 100vh;
+  min-height: 470px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+
+  .form-wrapper {
+    background-color: #fff;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+
+    .form-tooltip-icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: $darkElectricBlue;
+      border: solid 2px $darkElectricBlue;
+      border-radius: 50%;
+      font-size: 10px;
+      height: 20px;
+      width: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: help;
+
+      @media screen and (max-width: 350px) {
+        right: 50px;
+      }
+    }
+
+    .form-tooltip-icon:hover~.form-tooltip {
+      display: block;
+    }
+
+    .logo,
+    .title {
+      color: $darkElectricBlue;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .title {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: relative;
+
+      button {
+        background-color: $darkElectricBlue;
+        color: #fff;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 500ms;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        background-color: #ccc;
+        color: #808080;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        color: $blackCoral;
+        font-size: 12px;
+
+        .icon-register {
+          width: 50px;
+          height: 50px;
+          color: $darkElectricBlue;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    p {
+      color: $charCoal;
+      font-size: 12px;
+      margin-top: 10px;
+      display: flex;
+      gap: 5px;
+
+      a {
+        text-decoration: none;
+        color: $darkElectricBlue;
+      }
+    }
+
+    .form-tooltip {
+      display: none;
+      position: absolute;
+      padding: 10px 25px;
+      background-color: $darkElectricBlue;
+      color: $beauBlue;
+      border-radius: 5px;
+      font-size: 12px;
+      top: 10px;
+      right: 35px;
+      z-index: 2;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    height: fit-content;
+    overflow: hidden;
+  }
+}
+
+.chat-wrapper {
+  background-color: $beauBlue;
+  height: 100vh;
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 70%;
+    height: 80%;
+    min-width: 900px;
+    min-height: 230px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+
+  @include lg {
+    .container {
+      min-width: 768px;
+      width: 100%;
+    }
+  }
+
+  @include md {
+    .container {
+      min-width: 481px;
+    }
+  }
+
+  @include sm {
+    .container {
+      min-width: 100%;
+      height: 100%;
+      padding: unset;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.input-wrapper {
+  position: relative;
+
+  input {
+    padding: 15px 15px 5px 15px;
+    border: none;
+    width: 250px;
+    height: 70px;
+    border-bottom: 2px solid $darkElectricBlue;
+
+    &::placeholder {
+      color: $darkElectricBlue;
+      font-size: 20px;
+      position: relative;
+      bottom: 0;
+      transition: font-size 300ms, bottom 300ms ease;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &:focus::placeholder {
+      font-size: 15px;
+      bottom: 25px;
+    }
+  }
+
+  input.empty-field {
+    &::placeholder {
+      font-size: 15px;
+      color: #ff0000;
+    }
+  }
+
+  .placeholder-label {
+    position: absolute;
+    font-size: 15px;
+    z-index: 1;
+    left: 15px;
+    top: 3.3px;
+    display: none;
+    color: $darkElectricBlue;
+  }
+}
+
+.input-wrapper.small {
+  width: 100%;
+
+  input {
+    background-color: transparent;
+    border: none;
+    color: $cultured;
+    outline: none;
+    transition: background-color 500ms;
+    background-color: $darkElectricBlue;
+    height: 45px;
+    width: 100%;
+    padding: 0 10px;
+
+    &::placeholder {
+      color: $cultured;
+      font-size: 12px;
+    }
+
+    &:focus {
+      background-color: $blackCoral;
+    }
+
+    &:focus::placeholder {
+      font-size: 10px;
+      bottom: 17px;
+    }
+  }
+
+  .placeholder-label {
+    font-size: 10px;
+    z-index: 0;
+    left: 10px;
+    top: 1px;
+    color: $cultured !important;
+  }
+}

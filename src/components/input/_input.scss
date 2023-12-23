@@ -1,0 +1,51 @@
+@import 'src/style/partials';
+
+.input-message {
+  height: 50px;
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .image-file-name {
+    position: absolute;
+    bottom: 50px;
+    background-color: #fff;
+    right: 0;
+    width: fit-content;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: $blackCoral;
+    font-size: 18px;
+
+    &::placeholder {
+      color: $secondaryTextColor;
+    }
+  }
+
+  .send {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .icon {
+      height: 24px;
+      cursor: pointer;
+      color: $darkElectricBlue;
+    }
+
+    button {
+      border: none;
+      padding: 10px 15px;
+      color: $cultured;
+      background-color: $darkElectricBlue;
+      cursor: pointer;
+    }
+  }
+}

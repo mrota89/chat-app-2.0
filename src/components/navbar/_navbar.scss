@@ -1,0 +1,16 @@
+@import 'src/style/partials';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  .icon {
+    flex: 1;
+    cursor: pointer;
+  }
+}

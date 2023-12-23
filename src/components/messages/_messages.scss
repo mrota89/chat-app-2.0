@@ -1,0 +1,8 @@
+@import 'src/style/partials';
+
+.messages {
+  background-color: $platinum;
+  padding: 10px;
+  height: calc(100% - 100px);
+  overflow-y: scroll;
+}

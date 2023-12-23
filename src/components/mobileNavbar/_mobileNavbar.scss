@@ -1,0 +1,51 @@
+@import 'src/style/partials';
+
+.mobile-navbar {
+  display: none;
+}
+
+/* media queries */
+
+@include smToMd {
+  .mobile-navbar {
+    display: flex;
+    height: 100%;
+    background-color: $charCoal;
+    flex-direction: column;
+    position: absolute;
+    left: 200px;
+    width: 250px;
+    justify-content: space-between;
+    color: $cultured;
+
+    .user-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .search {
+      background-color: $charCoal;
+      width: 100%;
+
+      input {
+        background-color: $darkElectricBlue;
+        border: none;
+        color: $cultured;
+        width: 100%;
+        outline: none;
+        height: 50px;
+        padding-left: 8px;
+        transition: background-color 500ms;
+
+        &::placeholder {
+          color: $beauBlue;
+        }
+
+        &:focus {
+          background-color: $blackCoral;
+        }
+      }
+    }
+  }
+}

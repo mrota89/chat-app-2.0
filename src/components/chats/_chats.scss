@@ -1,0 +1,81 @@
+@import 'src/style/partials';
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  .chat {
+    padding: 11px 15px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    color: #ddd;
+    cursor: pointer;
+    transition: background-color 500ms;
+
+    &:hover {
+      background-color: $blackCoral;
+    }
+
+
+    img,
+    .user-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .chat-info {
+      span {
+        font-size: 16px;
+        font-weight: bolder;
+      }
+
+      p {
+        font-size: 14px;
+        color: $secondaryTextColor;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 180px;
+      }
+    }
+  }
+}
+
+/*media queries*/
+
+@include smToMd {
+  .chats {
+    .chat {
+      align-items: center;
+      padding: 10px 5px;
+
+      img,
+      .user-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .chat-info {
+        span {
+          font-size: 10px;
+        }
+
+        p {
+          width: 120px;
+        }
+      }
+    }
+  }
+}
+
+@include sm {
+  .chats {
+    .chat {
+      padding-left: 20px;
+    }
+  }
+}

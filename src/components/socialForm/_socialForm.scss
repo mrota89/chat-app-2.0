@@ -1,0 +1,51 @@
+@import 'src/style/partials';
+
+.social-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  gap: 10px;
+  min-width: 200px;
+  width: 70%;
+  margin: 0 auto;
+
+  button {
+    background-color: $darkElectricBlue;
+    font-size: 12px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    color: $cultured;
+    width: 100%;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #808080;
+  }
+
+  .saved {
+    width: 100px;
+    height: 20px;
+    background-color: #6df20ebf;
+    text-align: center;
+    width: 100%;
+    color: $cultured;
+  }
+
+  .loader {
+    width: 30px;
+    height: 30px;
+    animation: spin .5s linear infinite;
+    transform-origin: 50% 50%;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

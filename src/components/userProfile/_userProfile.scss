@@ -1,0 +1,73 @@
+@import 'src/style/partials';
+
+.user {
+  display: flex;
+  gap: 20px;
+  flex: 2;
+  min-width: 50%;
+  align-items: center;
+  justify-content: center;
+
+  img,
+  .user-icon {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    color: #fff;
+  }
+
+  .cta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    color: #fff;
+
+    button {
+      background-color: $darkElectricBlue;
+      font-size: 12px;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      color: $cultured;
+    }
+  }
+}
+
+/*media queries */
+
+@include smToMd {
+  .user {
+    padding: 10px;
+
+  }
+
+  .user.searchWrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 0 10px;
+
+    img {
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .cta-box {
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      gap: 15px;
+
+      button {
+        background-color: $darkElectricBlue;
+        font-size: 10px;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

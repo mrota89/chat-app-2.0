@@ -1,0 +1,96 @@
+@import 'src/style/partials';
+
+.active-chat {
+  flex: 2;
+  z-index: 2;
+
+  .no-conversation-selected {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $cultured;
+    padding: 0 50px;
+  }
+
+  .chat-info {
+    height: 50px;
+    background-color: $cultured;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: $charCoal;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .back-to-contacts {
+        display: none;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        object-fit: cover;
+      }
+    }
+
+    .chat-icons {
+      display: flex;
+      gap: 10px;
+
+      .icon {
+        height: 24px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/*media queries*/
+
+@include md {
+  .active-chat {
+    flex: 3;
+    position: relative;
+    left: 0;
+    transition: left 500ms;
+
+    .messageInfo {
+      display: none !important;
+    }
+  }
+
+  .active-chat.slide {
+    left: 250px
+  }
+}
+
+@include sm {
+  .active-chat {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 100%;
+    flex: unset;
+    transition: all 300ms ease-in-out;
+    width: 100vw;
+
+    .no-conversation-selected {
+      width: 100vw;
+    }
+
+    .back-to-contacts {
+      display: block !important;
+      cursor: pointer;
+    }
+  }
+
+  .active-chat.show {
+    top: 0;
+  }
+}
