@@ -65,12 +65,12 @@ const ContactList = () => {
         // crea una nuova chat nella chats collection
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
 
-
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [`chats.${combinedId}.userInfo`]: {
             uid: selectedUser.uid,
             displayName: selectedUser.displayName,
             photoURL: selectedUser.photoURL,
+            userSocial: selectedUser.userSocial,
           },
           [`chats.${combinedId}.date`]: serverTimestamp()
         });
@@ -92,6 +92,7 @@ const ContactList = () => {
         setUserInput("");
       }
     } catch (error) {
+      console.error(error)
       setErrorCode(error.code);
       setErrorMessage(mapCodesErrorToMessage(error.code));
       setShowErrorModal(true);
