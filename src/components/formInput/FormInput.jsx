@@ -18,7 +18,7 @@ const FormInput = ({
   const [error, setError] = useState(false);
   const ref = useRef();
 
-  const handleChange = useMemo(() =>
+  const onChange = useMemo(() =>
     debounce((event) => {
       const isValid = (isRequired ? event.target.validity.valid && !!event.target.value : event.target.validity.valid);
       const isEdit = event.target.value !== initialValue;
@@ -37,8 +37,8 @@ const FormInput = ({
 
   const handleInputChange = useCallback((event) => {
     setUserInput(event.target.value);
-    handleChange(event);
-  }, [handleChange, setUserInput]);
+    onChange(event);
+  }, [onChange, setUserInput]);
 
   const inputStyle = useMemo(() => {
     if (error) return { backgroundColor: 'rgba(255, 0, 0, 0.1)' };
