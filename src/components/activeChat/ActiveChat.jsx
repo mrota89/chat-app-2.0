@@ -1,10 +1,13 @@
-import React, { useMemo, useContext, useCallback } from 'react';
+import React, { useState, useMemo, useContext, useCallback, useEffect } from 'react';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { FaLinkedin, FaGithub, FaArrowLeft, FaUser } from 'react-icons/fa';
 import { ModalMobileContext, ActiveChatContext } from '../../context';
+import { db } from '../../firebase';
 import Messages from '../messages';
 import Input from '../input';
 
 const ActiveChat = () => {
+  const [userSocial, setUserSocial] = useState(undefined);
 
   const { isMobileModalOpen } = useContext(ModalMobileContext);
   const { showChatList, setShowChatList, data } = useContext(ActiveChatContext);
@@ -15,11 +18,11 @@ const ActiveChat = () => {
 
   const onClickSocialButton = useCallback((social) => {
     if (social === "gitHub") {
-      window.open(`https://github.com/${data.user.userSocial.gitHub}`, "_blank");
+      window.open(`https://github.com/${userSocial.gitHub}`, "_blank");
     } else {
-      window.open(`https://www.linkedin.com/in/${data.user.userSocial.linkedIn}`, "_blank");
+      window.open(`https://www.linkedin.com/in/${userSocial.linkedIn}`, "_blank");
     }
-  }, [data])
+  }, [userSocial])
 
   const chat = useMemo(() => [
     "active-chat",
@@ -28,6 +31,18 @@ const ActiveChat = () => {
   ].filter((x) => !!x).join(" "),
     [isMobileModalOpen, showChatList]
   );
+
+  useEffect(() => {
+    if (data?.user.uid) {
+      const unsub = onSnapshot(doc(db, "users", data.user.uid), (doc) => {
+        doc.exists() && setUserSocial(doc.data().userSocial)
+      });
+
+      return () => {
+        unsub();
+      }
+    }
+  }, [data.user.uid]);
 
   return (
     <div className={chat}>
@@ -47,15 +62,15 @@ const ActiveChat = () => {
               )}
               <span>{data.user?.displayName}</span>
             </div>
-            {data.user?.userSocial && (
+            {userSocial && (
               <div className="chat-icons">
-                {data.user.userSocial.linkedIn && (
+                {userSocial.linkedIn && (
                   <FaLinkedin
                     onClick={() => onClickSocialButton("linkedIn")}
                     className='icon'
                   />
                 )}
-                {data.user.userSocial.gitHub && (
+                {userSocial.gitHub && (
                   <FaGithub
                     onClick={() => onClickSocialButton("gitHub")}
                     className='icon'
