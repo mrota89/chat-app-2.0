@@ -23,7 +23,6 @@ const Messages = () => {
       {messages.map(msg => (
         <Message dataMsg={msg} key={msg.id} />
       ))}
-      <Message />
     </div>
   )
 }

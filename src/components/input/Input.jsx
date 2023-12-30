@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useState, useRef, useMemo } from 'react'
+import React, { useCallback, useContext, useState, useRef, useMemo, useEffect } from 'react'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { doc, arrayUnion, updateDoc, Timestamp, serverTimestamp } from 'firebase/firestore';
-import { FaPaperclip } from 'react-icons/fa';
+import { FaPaperclip, FaCheckCircle } from 'react-icons/fa';
 import { v4 as uuid } from 'uuid';
 import { db, storage } from '../../firebase';
+import loader from '../../img/loader.png'
 import { mapCodesErrorToMessage } from '../../utility/logic';
 import { AuthContext, ActiveChatContext, ServerErrorsContext } from '../../context';
 
@@ -11,6 +12,8 @@ import { AuthContext, ActiveChatContext, ServerErrorsContext } from '../../conte
 const Input = () => {
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [rows, setRows] = useState(1);
 
   const inputImageRef = useRef(null);
 
@@ -23,8 +26,8 @@ const Input = () => {
   } = useContext(ServerErrorsContext);
 
   const isSendButtonDisabled = useMemo(() => (
-    text.length === 0 && !image
-  ), [image, text.length])
+    (text.length === 0 && !image) || loading
+  ), [image, loading, text.length])
 
   const attachedImageCaption = useMemo(() => (
     text ? `${image?.name}\\n${text}` : image?.name
@@ -110,6 +113,7 @@ const Input = () => {
 
     setText("");
     setImage(null);
+    setRows(1);
     inputImageRef.current.value = null;
   }, [
     currentUser.uid, data.chatId, data.user.uid, image,
@@ -122,22 +126,46 @@ const Input = () => {
     inputImageRef.current.value = null;
   }, [])
 
+  const handleTextChange = useCallback((event) => {
+    setText(event.target.value);
+    const charNumber = event.target.value.length;
+    setRows(charNumber > 24 ? 3 : 1);
+  }, []);
+
+  useEffect(() => {
+    if (image) {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 2500)
+    }
+  }, [image])
+
   return (
     <div className='input-message'>
       {image && (
-        <div className='image-file-name'>
-          <div className="delete-image-button" onClick={onDeleteAttachedImage}>
-            <div className='close' />
-            <div className='close' />
-          </div>
+        <div className='image-file-name' style={{ bottom: rows > 1 ? '86px' : '50px' }}>
+          {loading ? (
+            <img src={loader} alt="spinner" className="loader" />
+          ) : (
+            <FaCheckCircle className='icon' />
+          )}
           {image.name}
+          {!loading && (
+            <div className="delete-image-button" onClick={onDeleteAttachedImage}>
+              <div className='close' />
+              <div className='close' />
+            </div>
+          )}
         </div>
       )}
-      <input
-        type="text"
-        placeholder="Messaggio"
-        onChange={(event) => setText(event.target.value)}
+      <textarea
+        onChange={handleTextChange}
         value={text}
+        rows={rows}
+        maxLength={1000}
+        placeholder="Messaggio"
+        style={{ minHeight: rows > 1 ? '50px' : 'unset' }}
       />
       <div className="send">
         <input

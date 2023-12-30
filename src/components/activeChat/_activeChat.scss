@@ -3,6 +3,12 @@
 .active-chat {
   flex: 2;
   z-index: 2;
+  flex-direction: column;
+  display: flex;
+
+  >div {
+    flex-grow: 1;
+  }
 
   .no-conversation-selected {
     height: 100%;
