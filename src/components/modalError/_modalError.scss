@@ -1,62 +1,38 @@
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+.exclamation-icon {
+  color: #ff0000;
+  height: 60px;
+  width: 60px;
+}
 
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    height: 50vh;
-    width: 50vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.error-title {
+  margin: 10px 0 20px 0;
+  color: $darkElectricBlue;
+  font-weight: bold;
+  font-size: 24px;
+}
 
-    .exclamation-icon {
-      color: #ff0000;
-      height: 60px;
-      width: 60px;
-    }
+.error-message {
+  color: $charCoal;
+  width: 80%;
+  margin: 10px auto 20px auto;
+  word-break: break-word;
+  line-height: 1.3;
+  font-size: 14px;
+  text-align: center;
+}
 
-    h2 {
-      margin: 10px 0 20px 0;
-      color: $darkElectricBlue;
-      font-weight: bold;
-      font-size: 24px;
-    }
+.close-error {
+  padding: 8px 16px;
+  background-color: $darkElectricBlue;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 500ms;
 
-    p {
-      color: $charCoal;
-      width: 80%;
-      margin: 10px auto 20px auto;
-      word-break: break-word;
-      line-height: 1.3;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    button {
-      padding: 8px 16px;
-      background-color: $darkElectricBlue;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 500ms;
-
-      &:disabled {
-        cursor: not-allowed;
-        background-color: #ccc;
-        color: #808080;
-      }
-    }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #808080;
   }
 }

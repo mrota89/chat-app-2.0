@@ -6,10 +6,10 @@ const ModalError = ({ errorCode, errorMessage, onClose }) => {
     <div className="modal">
       <div className="modal-content">
         <FaExclamationCircle className="exclamation-icon" />
-        <h2>Errore</h2>
+        <h2 className='error-title'>Errore</h2>
         <strong>{errorCode}</strong>
-        <p>{errorMessage}</p>
-        <button onClick={onClose}>Ok</button>
+        <p className='error-message'>{errorMessage}</p>
+        <button className="close-error" onClick={onClose}>Ok</button>
       </div>
     </div>
   );

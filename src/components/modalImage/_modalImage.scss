@@ -1,0 +1,46 @@
+.image-viewer {
+  .modal-content {
+    width: 70vh !important;
+    height: 70vh !important;
+
+    .buttons-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      .icon {
+        height: 24px;
+        cursor: pointer;
+        color: $charCoal;
+      }
+
+      .close-button {
+        width: 15px;
+        height: 15px;
+        position: relative;
+        cursor: pointer;
+
+        .close {
+          width: 3px;
+          height: 12px;
+          background-color: #000;
+          rotate: 135deg;
+          position: absolute;
+          right: 5.5px;
+          border-radius: 5px;
+        }
+
+        .close:nth-child(2) {
+          rotate: -135deg;
+        }
+      }
+    }
+
+    .modal-image {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
