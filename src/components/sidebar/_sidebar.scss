@@ -23,16 +23,13 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      margin-right: 5px;
 
-      .icon.bars-menu {
+      .icon.circle-chevron {
         cursor: pointer;
         display: block;
         font-size: 20px;
         transition: transform 0.3s ease-in-out;
-      }
-
-      .icon.bars-menu.rotate-90 {
-        transform: rotate(45deg);
       }
     }
   }

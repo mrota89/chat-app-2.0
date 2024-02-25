@@ -1,5 +1,5 @@
 import React, { useMemo, useContext, useCallback } from 'react'
-import { FaEllipsisV } from 'react-icons/fa';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import Navbar from '../navbar';
 import SocialForm from '../socialForm';
 import ContactList from '../contactList';
@@ -8,7 +8,7 @@ import { useWindowWidth } from '../../utility/hook';
 
 const Sidebar = () => {
   const { showChatList } = useContext(ActiveChatContext);
-  const { setIsMobileModalOpen } = useContext(ModalMobileContext);
+  const { isMobileModalOpen, setIsMobileModalOpen } = useContext(ModalMobileContext);
   const windowWidth = useWindowWidth();
 
 
@@ -23,22 +23,24 @@ const Sidebar = () => {
     [showChatList]
   );
 
-  const dotsMenu = useMemo(() => [
-    "icon",
-    "bars-menu",
-  ].filter((x) => !!x).join(" "),
-    []
-  );
+  console.log(isMobileModalOpen)
 
   return (
     <div className={sidebar}>
       {(windowWidth <= 768 && windowWidth > 481)
         ?
         <div className="button-mobile-navbar">
-          <FaEllipsisV
-            className={dotsMenu}
-            onClick={onClickMenuButton}
-          />
+          {isMobileModalOpen ? (
+            <FaChevronLeft
+              className="circle-chevron icon"
+              onClick={onClickMenuButton}
+            />
+          ) : (
+            <FaChevronRight
+              className="circle-chevron icon"
+              onClick={onClickMenuButton}
+            />
+          )}
         </div>
         :
         <>
