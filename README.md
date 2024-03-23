@@ -12,7 +12,7 @@ Questo è un progetto in fase di sviluppo per una chat realizzata utilizzando Re
 - **Messaggistica:** Gli utenti possono inviare messaggi ai loro contatti registrati (implementato)
 - **Invio di immagini:** È possibile inviare immagini tramite la chat (implementato)
 - **Contatti social:** Gli utenti possono condividere il proprio account GitHub e LinkedIn (implementato)
-- **Anteprima immagini:** Cliccando su una immagine presente nella chat, si apre un modale contenente l'anteprima della stessa (da implementare)
+- **Anteprima immagini:** Cliccando su una immagine presente nella chat, si apre un modale contenente l'anteprima della stessa, con la possibilità di effettuarne il download (implementato)
 - **Modifica ed eliminazione dei messaggi inviati:** È possibile modificare ed eliminare i messaggi inviati (da implementare)
 - **Notifiche:** Ricevi notifiche quando ricevi nuovi messaggi (da implementare)
 
