@@ -42,7 +42,7 @@ const ContactList = () => {
   ].filter((x) => !!x).join(" "), [isModalOpen]);
 
   const onSelectContact = useCallback(async (selectedUser) => {
-    //mostra/nasconde elenco contati in visualizzazione smartphone
+    //mostra/nasconde elenco contatti in visualizzazione smartphone
     if (windowWidth <= 576) {
       setShowChatList((prev) => !prev);
     }

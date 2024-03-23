@@ -23,8 +23,6 @@ const Sidebar = () => {
     [showChatList]
   );
 
-  console.log(isMobileModalOpen)
-
   return (
     <div className={sidebar}>
       {(windowWidth <= 768 && windowWidth > 481)
