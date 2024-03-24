@@ -7,9 +7,9 @@ import { auth } from '../firebase';
 import { mapCodesErrorToMessage } from '../utility/logic.js';
 import { ServerErrorsContext } from '../context';
 
-import Loader from '../components/loader';
-import ModalError from '../components/modalError';
-import FormInput from '../components/formInput';
+import ModalError from '../common/modalError/ModalError';
+import Loader from '../common/loader';
+import FormInput from '../common/formInput';
 
 const EMAIL_REGEX = "^[a-z0-9.]+@[a-z]+.[a-z]{2,3}$";
 const ERROR_EMAIL = "Formato email non corretto";

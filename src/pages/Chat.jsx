@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import MobileNavbar from '../components/mobileNavbar';
 import Sidebar from '../components/sidebar';
 import ActiveChat from '../components/activeChat';
-import ModalError from '../components/modalError/ModalError';
+import ModalError from '../common/modalError/ModalError';
 import { ModalMobileContextProvider } from '../context/ModalMobileContext';
 import { ModalContextProvider } from '../context/ModalContext';
 import { ServerErrorsContext } from '../context';

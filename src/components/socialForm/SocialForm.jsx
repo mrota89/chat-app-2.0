@@ -4,7 +4,7 @@ import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { ServerErrorsContext, AuthContext } from '../../context';
 import loader from '../../img/loader.png'
-import FormInput from '../formInput/FormInput';
+import FormInput from '../../common/formInput/FormInput';
 
 
 const SocialForm = () => {

@@ -1,13 +1,16 @@
+/* common */
+@import '../common/modalError/modalError';
+@import '../common/loader/loader';
+@import '../common/formInput/formInput';
+
+/* component */
 @import '../components/activeChat/activeChat';
 @import '../components/contactList/contactList';
 @import '../components/chats/chats';
-@import '../components/loader/loader';
 @import '../components/input/input';
-@import '../components/formInput/formInput';
 @import '../components/message/message';
 @import '../components/messages/messages';
 @import '../components/mobileNavbar/mobileNavbar';
-@import '../components/modalError/modalError';
 @import '../components/navbar/navbar';
 @import '../components/sidebar/sidebar';
 @import '../components/socialForm/socialForm';

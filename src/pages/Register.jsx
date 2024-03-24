@@ -9,9 +9,9 @@ import { auth, storage, db } from '../firebase';
 import { getUserList, mapCodesErrorToMessage } from '../utility/logic.js';
 import { ServerErrorsContext } from '../context';
 
-import Loader from '../components/loader';
-import ModalError from '../components/modalError';
-import FormInput from '../components/formInput';
+import ModalError from '../common/modalError/ModalError';
+import Loader from '../common/loader';
+import FormInput from '../common/formInput';
 import UploadImageInput from '../components/uploadImageInput';
 
 const ERROR_EMAIL = 'Formato email non corretto';
