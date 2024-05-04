@@ -12,6 +12,7 @@ const ModalImage = ({ imageTitle, imageUrl, onClose }) => {
     setErrorMessage
   } = useContext(ServerErrorsContext);
 
+  const title = imageTitle.includes('\\n') ? imageTitle.split('\\n')[0] : imageTitle;
   const onImageDownload = useCallback(async () => {
     try {
       const response = await fetch(imageUrl);
@@ -19,7 +20,7 @@ const ModalImage = ({ imageTitle, imageUrl, onClose }) => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.setAttribute('href', url);
-      link.setAttribute('download', imageTitle);
+      link.setAttribute('download', title);
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
@@ -29,13 +30,13 @@ const ModalImage = ({ imageTitle, imageUrl, onClose }) => {
       setErrorMessage(mapCodesErrorToMessage(error.code))
       setShowErrorModal(true)
     }
-  }, [imageTitle, imageUrl, setErrorCode, setErrorMessage, setShowErrorModal]);
+  }, [imageUrl, setErrorCode, setErrorMessage, setShowErrorModal, title]);
 
   return (
     <div className="modal image-viewer">
       <div className="modal-content">
         <div className="modal-title">
-          <h4>{imageTitle}</h4>
+          <h4>{title}</h4>
           <div className="buttons-group">
             <FaDownload onClick={onImageDownload} className='icon' />
             <div className="close-button" onClick={onClose}>
